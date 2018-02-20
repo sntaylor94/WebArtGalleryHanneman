@@ -5,9 +5,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action = "addItemServlet" method = "post">
-		Title: <input type = "text" name = "title">
-		Artist: <input type = "text" name = "artistName">
+	<form action = "addItemServlet" method = "post"><br/>
+		*Title: <input type = "text" name = "title" required><br/>
+		*Artist: <input type = "text" name = "artistName" required><br />
 		Media: <select name = "media">
 					<option value = "pencil">Pencil</option>
 					<option value = "ink">Ink</option>
@@ -22,10 +22,11 @@
 					<option value = "collage">Collage</option>
 					<option value = "assemblage">Assemblage</option>
 					<option value = "other media">Other Media</option>
-				</select>
-		Year: <input type = "text" name = "year">
-		Value: <input type = "number" step=".01">
+				</select><br />
+		Year: <input type = "text" name = "year"><br />
+		Value: <input type = "number" name = "value"><br />
 	</form>
+	<p>* denotes required field</p>
 	<a href = "index.html">Back to home</a><br />
 	<a href = "viewAllItemsServlet">View the complete list of artwork</a><br/>
 </body>
