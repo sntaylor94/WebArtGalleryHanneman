@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import model.GalleryPiece;
+import model.Position;
 
 public class GalleryPieceHelper {
 	
@@ -38,6 +39,30 @@ public class GalleryPieceHelper {
 		deleteItem.setMaxResults(1);
 		GalleryPiece toDelete = deleteItem.getSingleResult();
 		em.remove(toDelete);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public GalleryPiece searchForItemById(int galleryId) {
+		EntityManager em = emfactory.createEntityManager();
+		GalleryPiece foundPiece = em.find(GalleryPiece.class, id);
+		em.close();
+		return foundPiece;
+	}
+	
+	public void updateItem(GalleryPiece gp) {
+		EntityManager em = emfactory.createEntityManager();
+		em.getTransaction().begin();
+		TypedQuery<GalleryPiece> updatePiece = em.createQuery("UPDATE GalleryPiece g SET g.title = :selectedTitle, g.artistName = :selectedArtist, g.media = :selectedMedia, g.year = :selectedYear, g.value = :selectedValue " + "WHERE g.id = :selectedId", GalleryPiece.class);
+		updatePiece.setParameter("selectedTitle", gp.getTitle());
+		updatePiece.setParameter("selectedArtist", gp.getArtistName());
+		updatePiece.setParameter("selectedMedia", gp.getMedia());
+		updatePiece.setParameter("selectedYear", gp.getYear());
+		updatePiece.setParameter("selectedValue", gp.getValue());
+		int updateCount=updatePiece.executeUpdate();
+		if(updateCount>0) {
+			System.out.println("Art Piece Updated");
+		}
 		em.getTransaction().commit();
 		em.close();
 	}
