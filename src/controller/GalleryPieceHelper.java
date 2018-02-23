@@ -8,7 +8,6 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import model.GalleryPiece;
-import model.Position;
 
 public class GalleryPieceHelper {
 	
@@ -45,7 +44,7 @@ public class GalleryPieceHelper {
 	
 	public GalleryPiece searchForItemById(int galleryId) {
 		EntityManager em = emfactory.createEntityManager();
-		GalleryPiece foundPiece = em.find(GalleryPiece.class, id);
+		GalleryPiece foundPiece = em.find(GalleryPiece.class, galleryId);
 		em.close();
 		return foundPiece;
 	}

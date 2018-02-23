@@ -42,21 +42,21 @@ public class editGalleryListServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String act = request.getParameter("doThisItem");
-		GallerPieceHelper galleryHelper = new GalleryPieceHelper();
+		GalleryPieceHelper galleryHelper = new GalleryPieceHelper();
 		if (act == null) {
 			// no button has been selected
 			getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
 
 		} else if (act.equals("Delete Selected Item")) {
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
-			ListItem itemToDelete = galleryHelper.searchForItemById(tempId);
+			GalleryPiece itemToDelete = galleryHelper.searchForItemById(tempId);
 			galleryHelper.deleteItem(itemToDelete);
 			
 			getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
 			
 		} else if (act.equals("Edit Selected Item")) {
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
-			ListItem itemToEdit = galleryHelper.searchForItemById(tempId);
+			GalleryPiece itemToEdit = galleryHelper.searchForItemById(tempId);
 			request.setAttribute("itemToEdit", itemToEdit);
 			getServletContext().getRequestDispatcher("/edititem.jsp").forward(request, response);
 		} else if (act.equals("Add New Item")) {
