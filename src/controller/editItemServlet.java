@@ -25,14 +25,6 @@ public class editItemServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +32,7 @@ public class editItemServlet extends HttpServlet {
 		GalleryPieceHelper galleryHelper = new GalleryPieceHelper();
 		
 		String title = request.getParameter("title");
-		String artist = request.getParameter("artist");
+		String artist = request.getParameter("artistName");
 		String media = request.getParameter("media");
 		String year = request.getParameter("year");
 		String valueAsString = request.getParameter("value");

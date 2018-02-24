@@ -58,6 +58,7 @@ public class GalleryPieceHelper {
 		updatePiece.setParameter("selectedMedia", gp.getMedia());
 		updatePiece.setParameter("selectedYear", gp.getYear());
 		updatePiece.setParameter("selectedValue", gp.getValue());
+		updatePiece.setParameter("selectedId", gp.getId());
 		int updateCount=updatePiece.executeUpdate();
 		if(updateCount>0) {
 			System.out.println("Art Piece Updated");

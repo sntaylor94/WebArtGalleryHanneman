@@ -9,10 +9,10 @@
 </head>
 <body>
 	<form action = "editItemServlet" method = "post">
-	Title: <input type = "text" name = "store" value = "${itemToEdit.title}">
-	Artist: <input type="text" name="artistName" value = "${itemToEdit.artist}"><br />
-	Media: <select name="media" value = "${itemToEdit.media}">
-		<option value=null></option>
+	Title: <input type = "text" name = "title" value = "${itemToEdit.title}">
+	Artist: <input type="text" name="artistName" value = "${itemToEdit.artistName}"><br />
+	Media: <select name="media">
+		<option value="${itemToEdit.media}">${itemToEdit.media}</option>
 		<option value="pencil">Pencil</option>
 		<option value="ink">Ink</option>
 		<option value="pastels">Pastels</option>

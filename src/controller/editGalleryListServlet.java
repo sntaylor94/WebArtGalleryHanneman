@@ -25,23 +25,13 @@ public class editGalleryListServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String act = request.getParameter("doThisItem");
+		String act = request.getParameter("doThisToItem");
 		GalleryPieceHelper galleryHelper = new GalleryPieceHelper();
 		if (act == null) {
 			// no button has been selected
@@ -58,7 +48,7 @@ public class editGalleryListServlet extends HttpServlet {
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
 			GalleryPiece itemToEdit = galleryHelper.searchForItemById(tempId);
 			request.setAttribute("itemToEdit", itemToEdit);
-			getServletContext().getRequestDispatcher("/edititem.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/editPage.jsp").forward(request, response);
 		} else if (act.equals("Add New Item")) {
 			getServletContext().getRequestDispatcher("/addItem.jsp").forward(request, response);
 		}

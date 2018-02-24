@@ -30,8 +30,7 @@
 			Value: <input type="text" name="value"><br /> 
 			<input type="submit" value="Add Art Piece">
 	</form>
-	<p>* denotes required field</p>
-	<a href="index.html">Back to home</a>
+	<a href="index.jsp">Back to home</a>
 	<br />
 	<a href="viewAllItemsServlet">View the complete list of artwork</a>
 	<br />

@@ -16,31 +16,29 @@ import model.GalleryPiece;
 public class addItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public addItemServlet() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public addItemServlet() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String title = request.getParameter("title");
-		String artist = request.getParameter("artist");
+		String artist = request.getParameter("artistName");
 		GalleryPieceHelper galleryHelp = new GalleryPieceHelper();
-		if(request.getParameter("media") != null && request.getParameter("year") != null && request.getParameter("value") != null) {
-			String media = request.getParameter("media");
-			String year = request.getParameter("year");
-			String valueAsString = request.getParameter("value");
-			double value = Double.parseDouble(valueAsString);
-			GalleryPiece gp = new GalleryPiece(title, artist, media, year, value);
-			galleryHelp.insertArt(gp);
-		}else {
-			GalleryPiece gp = new GalleryPiece(title, artist);
-			galleryHelp.insertArt(gp);
-		}
+		String media = request.getParameter("media");
+		String year = request.getParameter("year");
+		String valueAsString = request.getParameter("value");
+		double value = Double.parseDouble(valueAsString);
+		GalleryPiece gp = new GalleryPiece(title, artist, media, year, value);
+		galleryHelp.insertArt(gp);
+		getServletContext().getRequestDispatcher("/addItem.jsp").forward(request, response);
 	}
 
 }
